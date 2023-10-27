@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form [formGroup]="signIn" (ngSubmit)="signInForm()">
+                <div class="fom-group">
+                    <label for="skills">skills</label>
+                    <div formArrayName="skills">
+                        <div  *ngFor="let s of skillsArray.controls; let i = index">
+                            <input type="text" id="skills" class="form-control mt-2" [formControlName]="i" >
+                            <button *ngIf="i >= 1" class="btn btn-danger mt-2" (click)="onDelete(i)" type="button">
+                                delete skills
+                            </button>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary mt-2" (click)="onAdd()" type="button"
+                    [disabled]='skillsArray.length > 5'>
+                        add skills
+                    </button>
+                    <button type="submit" class="btn btn-warning ml-2 mt-2">submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
