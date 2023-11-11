@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,9 +8,16 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class BlogComponent implements OnInit {
  signIn !: FormGroup
+ @Input() custompro !: string  ;
+
+ @Output() msg : EventEmitter<string> = new EventEmitter<string>()
+
   constructor() { }
 
   ngOnInit(): void {
+    this.msg.emit("child to parent")
+
+    
     this.signIn = new FormGroup({
       blog : new FormArray([
         new FormGroup({
